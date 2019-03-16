@@ -16,10 +16,12 @@
 # along with Mycroft Core.  If not, see <http://www.gnu.org/licenses/>.
 
 from adapt.intent import IntentBuilder
-
+from os.path import dirname
 from mycroft.skills.core import MycroftSkill
 from mycroft.util.log import getLogger
-
+import requests
+import urllib.request
+import ssl
 __author__ = 'eward'
 
 LOGGER = getLogger(__name__)
@@ -39,19 +41,23 @@ class HelloWorldSkill(MycroftSkill):
         self.register_intent(how_are_you_intent,
                              self.handle_how_are_you_intent)
 
-        hello_world_intent = IntentBuilder("HelloWorldIntent"). \
-            require("HelloWorldKeyword").build()
-        self.register_intent(hello_world_intent,
-                             self.handle_hello_world_intent)
+      #  hello_world_intent = IntentBuilder("HelloWorldIntent"). \
+      #      require("HelloWorldKeyword").build()
+      #  self.register_intent(hello_world_intent,
+      #                       self.handle_hello_world_intent)
 
     def handle_thank_you_intent(self, message):
-        self.speak_dialog("welcome")
+        url="https://10.106.0.225/lamp1/0"
+        r = urllib.request.urlopen("https://10.106.0.225/lamp1/0", context=ssl.SSLContext()).read()
+        self.speak("As you wish") 
 
     def handle_how_are_you_intent(self, message):
-        self.speak_dialog("how.are.you")
+        url="https://10.106.7.2/lamp2/0"
+        r = urllib.request.urlopen("https://10.106.7.2/lamp2/0", context=ssl.SSLContext()).read()
+        self.speak("As you wish")
 
-    def handle_hello_world_intent(self, message):
-        self.speak_dialog("hello.world")
+    #def handle_hello_world_intent(self, message):
+    #    self.speak_dialog("hello.world")
 
     def stop(self):
         pass
