@@ -85,7 +85,7 @@ class HelloWorldSkill(MycroftSkill):
         self.speak("As you wish") 
         
     def handle_hello_world2_intent(self, message):
-        url="https://10.106.7.2/lamp2/0"
+        url="https://10.106.7.2/lamp2/1"
         r = urllib.request.urlopen("https://10.106.7.2/lamp2/0", context=ssl.SSLContext()).read()
         self.speak("As you wish")
 
