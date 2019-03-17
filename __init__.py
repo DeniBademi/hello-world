@@ -41,20 +41,31 @@ class HelloWorldSkill(MycroftSkill):
         self.register_intent(how_are_you_intent,
                              self.handle_how_are_you_intent)
 
+        
+    def handle_thank_you_intent(self, message):
+        self.speak_dialog("welcome")
+
+    def handle_how_are_you_intent(self, message):
+        self.speak_dialog("how.are.you")
+
+    def handle_hello_world_intent(self, message):
+        self.speak_dialog("hello.world")
+
       #  hello_world_intent = IntentBuilder("HelloWorldIntent"). \
       #      require("HelloWorldKeyword").build()
       #  self.register_intent(hello_world_intent,
       #                       self.handle_hello_world_intent)
 
-    def handle_thank_you_intent(self, message):
+    #def handle_thank_you_intent(self, message):
        # url="https://10.106.0.225/lamp1/0"
        # r = urllib.request.urlopen("https://10.106.0.225/lamp1/0", context=ssl.SSLContext()).read()
-        self.speak("As you wish") 
+      #  self.speak("As you wish") 
 
-    def handle_how_are_you_intent(self, message):
+   # def handle_how_are_you_intent(self, message):
        # url="https://10.106.7.2/lamp2/0"
        # r = urllib.request.urlopen("https://10.106.7.2/lamp2/0", context=ssl.SSLContext()).read()
-        self.speak("As you wish")
+    #    self.speak("As you wish")
+        
 
     #def handle_hello_world_intent(self, message):
     #    self.speak_dialog("hello.world")
